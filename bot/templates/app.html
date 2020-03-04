@@ -1,0 +1,323 @@
+
+<!--<!doctype html>-->
+<!--<html>-->
+<!--  <head>-->
+<!--    <title>Django ChatterBot Example</title>-->
+<!--    {% load staticfiles %}-->
+<!--    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>-->
+<!--    <link rel="stylesheet" href="{% static 'css/custom.css' %}"/>-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>-->
+<!--&lt;!&ndash;    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>&ndash;&gt;-->
+<!--  </head>-->
+<!--  <body>-->
+
+
+<!--    <div class="container">-->
+
+<!--      <div class="jumbotron mt-1">-->
+<!--        <h1 class="jumbotron-heading text-xs-center">Django ChatterBot Example</h1>-->
+<!--        <p class="lead text-xs-center">-->
+<!--          This is a web app that allows you to talk to ChatterBot.-->
+<!--        </p>-->
+
+<!--        <hr class="my-2">-->
+
+<!--        <div class="row">-->
+<!--          <div class="col-xs-6 offset-xs-3">-->
+<!--            <ul class="list-group chat-log js-chat-log">-->
+<!--            </ul>-->
+
+<!--            <div class="input-group input-group-lg mt-1">-->
+<!--              <input type="text" class="form-control js-text" placeholder="Type something to begin..."/>-->
+<!--              <span class="input-group-btn">-->
+<!--                <button class="btn btn-primary js-say">Submit</button>-->
+<!--              </span>-->
+<!--            </div>-->
+
+<!--          </div>-->
+<!--        </div>-->
+
+<!--      </div>-->
+
+<!--    </div>-->
+
+<!--    <script src="{% static 'js/jquery.js' %}"></script>-->
+<!--    <script src="{% static 'js/js/cookie.js' %}"></script>-->
+<!--    <script src="{% static 'js/bootstrap.js' %}"></script>-->
+<!--&lt;!&ndash;    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" ></script>&ndash;&gt;-->
+<!--    <script>-->
+<!--      var chatterbotUrl = '{% url "chatterbot" %}';-->
+<!--      var csrftoken = Cookies.get('csrftoken');-->
+<!--      function csrfSafeMethod(method) {-->
+<!--        // these HTTP methods do not require CSRF protection-->
+<!--        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));-->
+<!--      }-->
+<!--      $.ajaxSetup({-->
+<!--        beforeSend: function(xhr, settings) {-->
+<!--          if (!csrfSafeMethod(settings.type) && !this.crossDomain) {-->
+<!--            xhr.setRequestHeader("X-CSRFToken", csrftoken);-->
+<!--          }-->
+<!--        }-->
+<!--      });-->
+<!--      var $chatlog = $('.js-chat-log');-->
+<!--      var $input = $('.js-text');-->
+<!--      var $sayButton = $('.js-say');-->
+<!--      function createRow(text) {-->
+<!--        var $row = $('<li class="list-group-item"></li>');-->
+<!--        $row.text(text);-->
+<!--        $chatlog.append($row);-->
+<!--      }-->
+<!--      function submitInput() {-->
+<!--        var inputData = {-->
+<!--          'text': $input.val()-->
+<!--        }-->
+<!--        // Display the user's input on the web page-->
+<!--        createRow(inputData.text);-->
+<!--        var $submit = $.ajax({-->
+<!--          type: 'POST',-->
+<!--          url: chatterbotUrl,-->
+<!--          data: JSON.stringify(inputData),-->
+<!--          contentType: 'application/json'-->
+<!--        });-->
+<!--        $submit.done(function(statement) {-->
+<!--            createRow(statement.text);-->
+<!--            // Clear the input field-->
+<!--            $input.val('');-->
+<!--            // Scroll to the bottom of the chat interface-->
+<!--            $chatlog[0].scrollTop = $chatlog[0].scrollHeight;-->
+<!--        });-->
+<!--        $submit.fail(function() {-->
+<!--          // TODO: Handle errors-->
+<!--        });-->
+<!--      }-->
+<!--      $sayButton.click(function() {-->
+<!--        submitInput();-->
+<!--      });-->
+<!--      $input.keydown(function(event) {-->
+<!--        // Submit the input when the enter button is pressed-->
+<!--        if (event.keyCode == 13) {-->
+<!--          submitInput();-->
+<!--        }-->
+<!--      });-->
+<!--    </script>-->
+
+<!--  <button class ="open-button" onclick="openForm()">Chat</button>-->
+<!--   <div class="chat-popup" id="myForm">-->
+<!--   <form action="" class="form-container">-->
+<!--      <iframe src="" width="280" height="400"></iframe>-->
+<!--     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>-->
+<!--   </form>-->
+<!--   </div>-->
+
+<!--&lt;!&ndash;  <script>&ndash;&gt;-->
+<!--&lt;!&ndash;  (function(w, d){&ndash;&gt;-->
+<!--&lt;!&ndash;   var id='embedly-platform', n = 'script';&ndash;&gt;-->
+<!--&lt;!&ndash;   if (!d.getElementById(id)){&ndash;&gt;-->
+<!--&lt;!&ndash;     w.embedly = w.embedly || function() {(w.embedly.q = w.embedly.q || []).push(arguments);};&ndash;&gt;-->
+<!--&lt;!&ndash;     var e = d.createElement(n); e.id = id; e.async=1;&ndash;&gt;-->
+<!--&lt;!&ndash;     e.src = ('https:' === document.location.protocol ? 'https' : 'http') + '://cdn.embedly.com/widgets/platform.js';&ndash;&gt;-->
+<!--&lt;!&ndash;     var s = d.getElementsByTagName(n)[0];&ndash;&gt;-->
+<!--&lt;!&ndash;     s.parentNode.insertBefore(e, s);&ndash;&gt;-->
+<!--&lt;!&ndash;   }&ndash;&gt;-->
+<!--&lt;!&ndash;  })(window, document);&ndash;&gt;-->
+<!--&lt;!&ndash;  </script>&ndash;&gt;-->
+
+<!--&lt;!&ndash;  <iframe style="width: 100%; height: 100px; overflow: show; border:1px solid #000;" src="http://127.0.0.1:8000/chatterbot" width="100" height="100" scrolling="yes">Iframes not supported</iframe>&ndash;&gt;-->
+
+<!--  </body>-->
+<!--</html>-->
+
+
+
+
+
+
+<!doctype html>
+<html>
+  <head>
+    <title>Django ChatterBot Example</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>-->
+<style>
+  body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+</style>
+
+  </head>
+  <body>
+
+  <button class ="open-button" onclick="openForm()">Chat</button>
+   <div class="chat-popup" id="myForm">
+
+<!--    <div class="container">-->
+
+<!--      <div class="jumbotron mt-1">-->
+
+        <div class="row">
+          <div class="col-xs-6 offset-xs-3">
+            <ul class="list-group chat-log js-chat-log">
+            </ul>
+
+            <div class="input-group input-group-lg mt-1">
+              <input type="text" class="form-control js-text" placeholder="Type something to begin..."/>
+              <span class="input-group-btn">
+                <button class="btn btn-primary js-say">Submit</button>
+              </span>
+            </div>
+
+          </div>
+        </div>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+
+<!--      </div>-->
+
+    </div>
+
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/js/cookie.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+<!--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" ></script>-->
+    <script>
+      var chatterbotUrl = '{% url "chatterbot" %}';
+      var csrftoken = Cookies.get('csrftoken');
+      function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+      }
+      $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+          if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+          }
+        }
+      });
+      var $chatlog = $('.js-chat-log');
+      var $input = $('.js-text');
+      var $sayButton = $('.js-say');
+      function createRow(text) {
+        var $row = $('<li class="list-group-item"></li>');
+        $row.text(text);
+        $chatlog.append($row);
+      }
+      function submitInput() {
+        var inputData = {
+          'text': $input.val(),
+          credentials: 'include',
+        }
+        // Display the user's input on the web page
+        createRow(inputData.text);
+        var $submit = $.ajax({
+          type: 'POST',
+          url: chatterbotUrl,
+          data: JSON.stringify(inputData),
+          contentType: 'application/json',
+          credentials: 'include',
+        });
+        $submit.done(function(statement) {
+            createRow(statement.text);
+            // Clear the input field
+            $input.val('');
+            // Scroll to the bottom of the chat interface
+            $chatlog[0].scrollTop = $chatlog[0].scrollHeight;
+        });
+        $submit.fail(function() {
+          // TODO: Handle errors
+        });
+      }
+      $sayButton.click(function() {
+        submitInput();
+      });
+      $input.keydown(function(event) {
+        // Submit the input when the enter button is pressed
+        if (event.keyCode == 13) {
+          submitInput();
+        }
+      });
+    </script>
+       <script>
+      function openForm() {
+        document.getElementById("myForm").style.display = "block";
+      }
+
+      function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+      }
+      </script>
+
+  </body>
+</html>

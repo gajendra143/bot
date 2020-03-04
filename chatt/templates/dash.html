@@ -1,0 +1,17 @@
+{% extends 'samp.html' %}
+{% block title %}log in {% endblock %}
+
+{% block content %}
+<div class=" col-xs-8" style="">
+    {% if request.user.username %}
+    <h3> welcome tochatbot: {{ request.user.username }}</h3>
+    <h4><a href="{% url 'data_from_chatbot' %}" align="center">chat_history</a></h4>
+    <h4><a href="{% url 'logout' %}" align="left">logout ({{ request.user.username }})</a></h4>
+    {% else %}
+
+    <!--<h3>{{message}}</h3>-->
+
+    {% endif %}
+
+</div>
+{% endblock %}

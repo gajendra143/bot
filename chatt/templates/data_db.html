@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+ {% if datas %}
+    <ol>
+        {% for data in datas %}
+           {% if data.conversation != 'training' %}
+               {% if forloop.counter|divisibleby:2 %}
+                  <li>User: {{data.in_response_to}} <br> Chatbot: {{data.text}}</li>
+               {% endif %}
+           {% endif %}
+        {% endfor%}
+    </ol>
+  {% endif %}
+</body>
+</html>

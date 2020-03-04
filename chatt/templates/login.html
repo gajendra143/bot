@@ -1,0 +1,15 @@
+{% extends 'samp.html' %}
+{% block title %}log in {% endblock %}
+
+{% block content %}
+<div class=" col-xs-8">
+    {% load crispy_forms_tags %}
+
+        <form action="" method="POST" novalidate> {% csrf_token %}
+            <h4> {{ form | crispy }}</h4>
+             <input type="submit" value="submit" class="btn btn-success">
+        </form>
+        <h3>{{ msg }}</h3>
+</div>
+
+{% endblock %}

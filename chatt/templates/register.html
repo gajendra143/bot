@@ -1,0 +1,19 @@
+{% extends 'samp.html' %}
+{% block title %}registration {% endblock %}
+
+{% block content %}
+<div class=" col-xs-8" style="">
+    {% load crispy_forms_tags %}
+
+    <!--<h3>create collage....</h3>-->
+        <form action="" method="POST" novalidate> {% csrf_token %}
+            <h4 style="color:blue"> {{ form | crispy }}</h4>
+             <input type="submit" value="submit" class="btn btn-success">
+        </form>
+    <br>
+        <h3>{{ msg }}</h3>
+
+    <br>
+</div>
+
+{% endblock %}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+  * {box-sizing: border-box;}
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+ background-color: #555;
+ color: white;
+ padding: 16px 20px;
+ border: none;
+ cursor: pointer;
+ opacity: 0.8;
+ position: fixed;
+ float: right;
+ bottom: 23px;
+ right: 28px;
+ /width: 280px;/
+}
+.button5 {border-radius: 50%;
+   height: 70px;
+   width: 70px;
+   text-align: center;
+   }
+.button4 {border-radius: 12px;}
+   /* The popup chat - hidden by default */
+.chat-popup {
+ display: none;
+ position: fixed;
+ bottom: 0;
+ right: 15px;
+ border: 3px solid #f1f1f1;
+ z-index: 9;
+}
+/* Add styles to the form container */
+.form-container {
+ max-width: 300px;
+ padding: 10px;
+ background-color: white;
+ margin-bottom: 0;
+ overflow-y: hidden;
+}
+/* Full-width textarea */
+.form-container textarea {
+ width: 100%;
+ padding: 15px;
+ margin: 5px 0 22px 0;
+ border: none;
+ background: #f1f1f1;
+ resize: none;
+ min-height: 200px;
+}
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+ background-color: #ddd;
+ outline: none;
+}
+/* Set a style for the submit/send button */
+.form-container .btn {
+ background-color: #4CAF50;
+ color: white;
+ padding: 16px 10px;
+ border: none;
+ cursor: pointer;
+ width: 280px;
+ margin-bottom: 10px;
+ opacity: 0.8;
+}
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+ background-color: red;
+}
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+ opacity: 1;
+}
+</style>
+
+
+</head>
+<body>
+
+<button class="open-button button5" onclick="openForm()">Chat</button>
+<!--<button class ="open-button" style="" onclick="openForm()">Chat</button>-->
+ <div class="chat-popup button4" id="myForm">
+ <form action="" class="form-container">
+    <iframe src="{% url 'mn' %}" width="280" height="300"></iframe>
+  <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+ </form>
+ </div>
+<script>
+function openForm() {
+ document.getElementById("myForm").style.display = "block";
+}
+function closeForm() {
+ document.getElementById("myForm").style.display = "none";
+}
+</script>
+
+</body>
+</html>
